@@ -1,10 +1,10 @@
-# Bank API Simples
+# Aplicação Bancária Simples
 
-Esta é uma API REST para uma aplicação bancária simples, desenvolvida com Spring Boot. O projeto simula funcionalidades essenciais como criação de contas, depósitos, transferências, consulta de saldo e extrato.
+Implementação de uma API REST para uma aplicação bancária simples, desenvolvida com Spring Boot. O projeto simula funcionalidades essenciais como criação de contas, depósitos, transferências, consulta de saldo e extrato.
 
-## Endpoints
+Esse projeto é uma extensão do repositório https://github.com/lucasbarbosaalves/bank-app-challenge seguindo as mesmas premissas e objetivos descritos no README.md.
 
-A API expõe os seguintes endpoints:
+## Rotas Implementadas
 
 ### Gerenciamento de Usuários
 
@@ -41,22 +41,17 @@ A API expõe os seguintes endpoints:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone <url-do-seu-repositorio>
+    git clone https://github.com/lucasbarbosaalves/bank-api-challenge.git
     ```
 
-2.  **Navegue até o diretório do projeto:**
-    ```bash
-    cd bank
-    ```
-
-3.  **Execute a aplicação com o Maven:**
+2. **Execute a aplicação com o Maven:**
     ```bash
     mvn spring-boot:run
     ```
 
 Após a inicialização, a aplicação estará disponível em `http://localhost:8080`.
 
-## Documentação da API (Swagger)
+## Documentação da API (Swagger) 
 
 A API está documentada com OpenAPI (Swagger). Após iniciar a aplicação, você pode acessar a interface interativa do Swagger para visualizar e testar todos os endpoints.
 
@@ -68,7 +63,7 @@ Este projeto utiliza um banco de dados em memória **H2 Database**. Isso signifi
 
 Você pode acessar o console do H2 para visualizar as tabelas e os dados em tempo real.
 
-*   **URL do Console H2:** http://localhost:8080/h2-console
+*   **URL do Console H2:** https://bank-api-challenge.onrender.com/h2-console
 
 Use as seguintes credenciais para conectar:
 
