@@ -1,5 +1,6 @@
 package com.lucasbarbosaalves.bank.services;
 
+import com.lucasbarbosaalves.bank.exception.ResourceNotFoundException;
 import com.lucasbarbosaalves.bank.entities.account.Account;
 import com.lucasbarbosaalves.bank.entities.transactions.Transaction;
 import com.lucasbarbosaalves.bank.entities.transactions.TransactionType;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor // Lombok
+@RequiredArgsConstructor
 public class TransactionService {
 
     private final AccountRepository accountRepository;
@@ -28,9 +29,9 @@ public class TransactionService {
         }
 
         Account fromAccount = accountRepository.findById(fromAccountId)
-                .orElseThrow(() -> new RuntimeException("Conta de origem não encontrada."));
+                .orElseThrow(() -> new ResourceNotFoundException("Conta de origem não encontrada com o ID: " + fromAccountId));
         Account toAccount = accountRepository.findById(toAccountId)
-                .orElseThrow(() -> new RuntimeException("Conta de destino não encontrada."));
+                .orElseThrow(() -> new ResourceNotFoundException("Conta de destino não encontrada com o ID: " + toAccountId));
 
 
         BigDecimal fromAccountBalance = getBalance(fromAccountId);

@@ -1,5 +1,6 @@
 package com.lucasbarbosaalves.bank.services;
 
+import com.lucasbarbosaalves.bank.exception.ResourceNotFoundException;
 import com.lucasbarbosaalves.bank.entities.transactions.TransactionDetailDTO;
 import com.lucasbarbosaalves.bank.entities.account.Account;
 import com.lucasbarbosaalves.bank.entities.transactions.Transaction;
@@ -25,7 +26,7 @@ public class AccountService {
 
     public BigDecimal getAccountBalance(UUID accountId) {
         if (!accountRepository.existsById(accountId)) {
-            throw new RuntimeException("Conta não encontrada.");
+            throw new ResourceNotFoundException("Conta não encontrada com o ID: " + accountId);
         }
         return transactionService.getBalance(accountId);
     }
@@ -43,7 +44,7 @@ public class AccountService {
             throw new IllegalArgumentException("O valor do depósito deve ser positivo.");
         }
         Account account = accountRepository.findById(accountId)
-                .orElseThrow(() -> new RuntimeException("Conta não encontrada."));
+                .orElseThrow(() -> new ResourceNotFoundException("Conta não encontrada com o ID: " + accountId));
 
         Transaction credit = new Transaction(UUID.randomUUID(), account, TransactionType.CREDIT, amount);
         transactionRepository.save(credit);

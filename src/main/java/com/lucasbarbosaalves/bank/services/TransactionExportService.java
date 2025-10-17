@@ -24,12 +24,12 @@ public class TransactionExportService {
         List<Transaction> transactions = transactionRepository.findByAccountIdOrderByCreatedAtAsc(accountId);
 
         StringBuilder csvContent = new StringBuilder();
-        csvContent.append("Data/Hora,Tipo,Valor,ID da Transação\n");
+        csvContent.append("Data/Hora,Tipo,Valor,ID da Transacao\n");
 
         for (Transaction tx : transactions) {
             csvContent.append(String.format("%s,%s,%s,%s\n",
                     tx.getCreatedAt().format(FORMATTER),
-                    tx.getType() == TransactionType.CREDIT ? "CRÉDITO" : "DÉBITO",
+                    tx.getType() == TransactionType.CREDIT ? "CREDITO" : "DEBITO",
                     tx.getAmount().toPlainString(),
                     tx.getId()));
         }
